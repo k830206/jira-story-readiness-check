@@ -1,0 +1,39 @@
+Continue developing the result using the responses from the API calls below. If you need additional information, populate the "request" field again. If you have sufficient information, create the final JSON.
+
+Requirements
+* "request" Field: This should be empty if this is the final version.
+* "result" Field: This should contain:
+ - narrative
+ - scope
+ - acceptance_criteria (as a list without numbering)
+ - related_stories (maximum of 3 most relevant stories): just need story numbers, description is not required
+ - estimated_points
+ - reason_for_estimated_points: Reason how estimated story points are calculated.
+* If you found any extra information from API call results, you should reflect the information into "result" field.
+* If you change the "story_readiness" from false to true, you need to explain your findings from the API call results in the "reason_to_change_readiness" field. If "story_readiness" is not changed as false, leave "reason_to_change_readiness" field as empty.
+* If "story_readiness" is "false": Explain what extra information is required in the "extra_information_required" field.
+* If you can't find enough information from the results and think no more research is required, you can finalize the story. However, you need to explain what extra information is needed to make the story ready in the "extra_information_required" field.
+
+JSON Structure
+{
+    "story_readiness": true|false,
+    "reason_to_change_readiness": "reason",
+    "request": [
+        { "url": "https://...", "jsonpath": "$.key, $.fields.summary, ..." },
+        { "url": "https://...", "jsonpath": "$.key, $.fields.summary, ..." }
+    ],
+    "result": {
+        "narrative": "string context",
+        "scope": "string context",
+        "acceptance_criteria": ["AC 1", "AC 2"],
+        "related_stories": ["A-1", "B-2"],
+        "estimated_points": 1,
+        "reason_for_estimated_points": "reason"
+    },
+    "extra_information_required": [
+        "required information to make ready for this story 1",
+        "required information to make ready for this story 2"
+    ]
+}
+
+API call results are:
